@@ -15,7 +15,7 @@
   <h1>Gossip#show</h1>
   <div class="row featurette">
     <div class="col-md-7">
-      <h2 class="featurette-heading"><%= @gossip.content %><span >It’ll blow your mind.</span></h2>
+      <h2 class="featurette-heading"><%= @gossip.content %></h2>
       <h5 class="text-muted">Title : <%= @gossip.title %></h5>
       <p class="lead">Author : <%= @gossip.user.first_name %> --><%= link_to "Son profil", profil_path(@id)%></p>
       <p class="lead">City : <%= @gossip.user.city.name %> --><%= link_to "Details", city_path(@id)%></p>

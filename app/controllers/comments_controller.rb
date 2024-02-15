@@ -23,7 +23,8 @@ class CommentsController < ApplicationController
     puts params    
     puts "%"*50
     @gossip = Gossip.find(params[:gossip_id])
-    @comment = Comment.new(content:params[:content],user:@gossip.user,gossip:@gossip)
+    @user = current_user
+    @comment = Comment.new(content:params[:content],user:@user,gossip:@gossip)
     if @comment.save
       redirect_to @gossip
     else
