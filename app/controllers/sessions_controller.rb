@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
       puts session[:user_id]
       session[:user_id] = user.id
       puts "La sessions est : #{session}"
-      redirect_to gossips_path
+      redirect_to "/welcome/#{current_user.first_name}"
     else
       puts "--> Je n'ai pas trouvé l'utilisateur demandé"
       flash.now[:danger] = 'Invalid email/password combination'
