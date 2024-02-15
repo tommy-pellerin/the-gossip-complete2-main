@@ -1,5 +1,6 @@
 class GossipsController < ApplicationController
   before_action :authenticate_user, except:[:index,:show]
+  before_action :verify_gossip_owner, only:[:edit,:update,:destroy]
 
     def index
       puts "$" * 60
@@ -33,7 +34,7 @@ class GossipsController < ApplicationController
     end
 
 
-    def update      
+    def update
       @gossip = Gossip.find(params[:id])
       puts "%"*10
       puts params      
@@ -82,6 +83,14 @@ class GossipsController < ApplicationController
 
       redirect_to gossips_path
     end
-    
+
+    private
+    def verify_gossip_owner
+      @gossip = Gossip.find(params[:id])
+      unless current_user == @gossip.user
+        flash[:danger] = "Please don't do this, you are not the gossip's author"
+        redirect_to gossips_path
+      end
+    end
 
 end

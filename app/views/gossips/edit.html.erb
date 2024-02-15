@@ -1,18 +1,18 @@
 <!-- test si ya erreur affiche ce message -->
-    <% if @gossip.errors.any? %>
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>Echec !</strong>
-        <p>Nous n'avons pas réussi à mettre à jour le potin pour la (ou les) raison(s) suivante(s) :</p>
-        <ul>
-          <% @gossip.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>        
-      </div>  
-    <% end %>
+<% if @gossip.errors.any? %>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Echec !</strong>
+    <p>Nous n'avons pas réussi à mettre à jour le potin pour la (ou les) raison(s) suivante(s) :</p>
+    <ul>
+      <% @gossip.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>        
+  </div>  
+<% end %>
 
 <h1>EDIT</h1>
 

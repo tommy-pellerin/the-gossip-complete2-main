@@ -1,4 +1,13 @@
 <!-- test si ya pas d'erreur affiche ce message -->
+<% flash.each do |type, message| %>
+  <div class="alert alert-<%= type == :notice ? "success" : "danger" %> alert-dismissible fade show" role="alert">
+    <%= message %>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<% end %>
+<!--
 <% if flash[:success] %>
   <div class="success">
     <div class="alert alert-success %> alert-dismissible fade show" role="alert">
@@ -9,7 +18,7 @@
     </div>
   </div>
 <% end %>
-
+-->
 <div class="jumbotron">
   <div class="container">
     <h1 class="display-3">Welcome <%= @first_name %></h1>
