@@ -1,12 +1,11 @@
 <!-- test si ya pas d'erreur affiche ce message -->
-<% if flash[:success] %>
-  <div class="success">
-    <div class="alert alert-success %> alert-dismissible fade show" role="alert">
-      <%= flash[:success] %>
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
+
+<% flash.each do |type, message| %>
+  <div class="alert alert-<%= type %> alert-dismissible fade show" role="alert">
+    <%= type %> - <%= message %>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
 <% end %>
 
@@ -32,10 +31,21 @@
     </div>
   </div>
 </div>
-
-<!--
-<p>Lien tempo pour voir les commentaire : <%= link_to "Commentaires", gossip_comments_path(@gossip.id)%></p>
--->
+<div class="container">
+<!--Compte le nombre de likes
+<p><%= @like.inspect %></p>
+<p><%= @gossip %></p>-->
+  <h5 class="text-white bg-dark"><%= @gossip.likes.count %> Likes</h5> 
+  <% if current_user %>
+    <% if @like == nil%>
+    <%= button_to "Like", likes_path(@gossip), method:"post", class:"btn btn-success p-4"%> 
+    <% end %>
+    <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+    <% if @like != nil%>
+    <%= button_to "Supprimer ce like", like_path(@like), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer ce like ?" }, class:"btn btn-warning p-4" %>
+    <% end %>
+  <% end %>
+</div>
 <br/>
 <div class="container">
   <!-- compter le nombre de commentaire -->

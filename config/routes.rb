@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :profils
   resources :cities, only: [:index,:show]
   resources :sessions, only: [:new, :create, :destroy]
+  resources :likes, except: [:show,:index]
   
 
 

@@ -15,6 +15,10 @@ module SessionsHelper
     end
   end
 
+  # def current_user_like #permet d'identifier le like de l'utilisateur actuel
+  #   Like.find_by(user:current_user,gossip:current_gossip)
+  # end
+
   private
     def authenticate_user
       unless current_user

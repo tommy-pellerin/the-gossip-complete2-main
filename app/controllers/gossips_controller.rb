@@ -26,6 +26,8 @@ class GossipsController < ApplicationController
 
         #Partie commentaire
         @comments = Comment.all
+        #partie like
+        @like = Like.find_by(user:current_user,gossip:@gossip)
     end
     
     def edit
