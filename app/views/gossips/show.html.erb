@@ -37,10 +37,12 @@
 <p>Lien tempo pour voir les commentaire : <%= link_to "Commentaires", gossip_comments_path(@gossip.id)%></p>
 -->
 <br/>
-<!-- compter le nombre de commentaire -->
-<h5><%= @gossip.comments.count %> comments</h5>
+<div class="container">
+  <!-- compter le nombre de commentaire -->
+  <h5 class="text-white bg-dark"><%= @gossip.comments.count %> comments</h5>
 
-<!-- Créer un commentaire -->
-<%= render 'comments/new' %>
-<!-- Affichage des commentaires -->
-<%= render 'comments/index' %>
+  <!-- Créer un commentaire -->
+  <%= render 'comments/new' %>
+  <!-- Affichage des commentaires -->
+  <%= render 'comments/index' %>
+</div>

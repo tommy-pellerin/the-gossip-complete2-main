@@ -8,8 +8,7 @@ class CitiesController < ApplicationController
     puts @id
     puts "%"*60
     @gossip = Gossip.find(params[:id])
-    @city = @gossip.user.city
-    
+    @city = @gossip.user.city  
 
   end
 end

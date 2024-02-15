@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user, except:[:index]
+  before_action :verify_comment_owner, only:[:edit,:update,:destroy]
+
   def index
     puts "%"*50
     puts "Dans index comment :"
@@ -68,6 +70,14 @@ class CommentsController < ApplicationController
     redirect_to @gossip
   end
 
+  private
+    def verify_comment_owner
+      @comment = Comment.find(params[:id])
+      unless current_user == @comment.user
+        flash[:danger] = "Please don't do this, you are not the gossip's author"
+        redirect_to gossips_path
+      end
+    end
 
   
 end
