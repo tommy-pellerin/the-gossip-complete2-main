@@ -1,0 +1,54 @@
+<% if @user.errors.any? %>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Echec !</strong>
+    <p>Nous n'avons pas réussi à créer le profil pour la (ou les) raison(s) suivante(s) :</p>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>        
+  </div>  
+<% end %>
+
+<!-- ... -->
+<div class="container m-5">
+    <h1>Creating new profil</h1>
+    <p>* : obligatoire</p>
+    <%= form_tag profils_path, method: "post" do %>
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <%= label_tag 'first_name :' %>      
+      <%= text_field_tag 'first_name', "Jean" %>
+      <br /> <br />  
+
+      <%= label_tag 'last_name :' %>
+      <%= text_field_tag 'last_name', "Smith"  %>
+      <br /> <br />  
+
+      <%= label_tag 'age :' %>
+      <%= text_field_tag 'age', "18"  %>
+      <br /> <br />  
+
+      <%= label_tag '*email :' %>
+      <%= text_field_tag 'email', "jean.smith@gmail.com"  %>
+      <br /> <br />  
+<!--Pour l'instant la ville sera par default: City.find(1)
+      <%= label_tag 'city :' %>
+      <%= text_field_tag 'city', "Paris"  %>
+      <br /> <br />  
+-->
+      <%= label_tag '*password (minimum 6 caracteres):' %>      
+      <%= text_field_tag 'password', "******"  %>
+      <br /> <br />
+
+      <%= label_tag 'description :' %><br/>
+      <%= text_area_tag 'description', "Bonjour, j'aime les chats" %>
+      <br /> <br />   
+      
+      <%= submit_tag "Submit" %>
+    <% end %>
+    <!-- ... -->
+</div>

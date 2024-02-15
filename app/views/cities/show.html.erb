@@ -1,0 +1,19 @@
+<h1>City : <%= @city.name %></h1>
+ <p>L'emsemble des pootins associés à la ville : </p> 
+
+ 
+<div class="container text-center">
+  
+  <% @city.users.each do |user| %> <%# gossips est un tableau d'objet ! %>
+      <p>
+        <%=user.first_name  %> : <br/>
+        
+        <%user.gossips.each do |gossip| %>
+          - id : <%= gossip.id %> - <br/>
+          <%= gossip.title %><br/>
+          <%= gossip.content %><br/>
+        <% end %> 
+      </p>
+  <% end %> 
+  
+</div>

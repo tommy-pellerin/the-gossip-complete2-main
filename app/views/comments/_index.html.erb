@@ -1,0 +1,11 @@
+
+<h4>Commentaires : </h4>
+
+<p class="container text-center">  
+  <% @gossip.comments.each do |comment| %> <%# gossips est un tableau d'objet ! %>
+      <ul>      
+        <li><%=comment.user.first_name  %> : <%=comment.content  %> <%= link_to "Edit", edit_gossip_comment_path(@gossip.id,comment.id), class:"btn btn-primary"%></li>           
+      </ul>
+  <% end %>   
+</p>
+

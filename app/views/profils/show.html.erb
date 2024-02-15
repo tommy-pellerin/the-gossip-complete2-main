@@ -1,0 +1,17 @@
+<div class="container marketing">
+  <h1>Profil#show</h1>
+  <div class="row featurette">
+    <div class="col-md-7 order-md-2">
+      <h3 class="fs-2 text-body-emphasis"><%= @gossip.user.first_name %> <%= @gossip.user.last_name %></h3>
+      <ul class="lead">
+        <li>description : <%= @gossip.user.description %></li>
+        <li>email : <%= @gossip.user.email %></li>
+        <li>age : <%= @gossip.user.age %></li>
+        <li>city : <%= @gossip.user.city.name %><br/><%= link_to "> En savoir plus sur la ville", city_path(@id), class:"icon-link"%> </li>    
+      </ul> 
+    </div>
+    <div class="col-md-5 order-md-1">
+      <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+    </div>
+  </div>
+</div>

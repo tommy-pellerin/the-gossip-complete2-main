@@ -1,0 +1,44 @@
+<!-- test si ya pas d'erreur affiche ce message -->
+<% if flash[:success] %>
+  <div class="success">
+    <div class="alert alert-success %> alert-dismissible fade show" role="alert">
+      <%= flash[:success] %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+<% end %>
+
+<!-- Show de 1 gossip -->
+<div class="container marketing">
+  <h1>Gossip#show</h1>
+  <div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading"><%= @gossip.content %><span >It’ll blow your mind.</span></h2>
+      <h5 class="text-muted">Title : <%= @gossip.title %></h5>
+      <p class="lead">Author : <%= @gossip.user.first_name %> --><%= link_to "Son profil", profil_path(@id)%></p>
+      <p class="lead">City : <%= @gossip.user.city.name %> --><%= link_to "Details", city_path(@id)%></p>
+      <p>
+        <%= link_to "Edit", edit_gossip_path(@id), class:"btn btn-primary p-5"%>    
+        <%= link_to "Destroy", gossip_path(@gossip), data: {turbo: true,turbo_method: :delete,turbo_confirm: "Are you sure?"}, class:"btn btn-danger" %> <!--il faut mettre gossip_path(@gossip) pour indiquer quelle élément on veut supprimer -->
+          <!--Pour pouvoir utiliser turbo_confirm il faut réactiver turbo:true tout en insérarnt la bonne ligne dans application et gemfile-->
+      </p>
+    </div>
+    <div class="col-md-5">
+      <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="250" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+    </div>
+  </div>
+</div>
+
+<!--
+<p>Lien tempo pour voir les commentaire : <%= link_to "Commentaires", gossip_comments_path(@gossip.id)%></p>
+-->
+<br/>
+<!-- compter le nombre de commentaire -->
+<h5><%= @gossip.comments.count %> comments</h5>
+
+<!-- Créer un commentaire -->
+<%= render 'comments/new' %>
+<!-- Affichage des commentaires -->
+<%= render 'comments/index' %>

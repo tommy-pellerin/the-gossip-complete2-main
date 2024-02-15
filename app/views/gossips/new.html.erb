@@ -1,0 +1,41 @@
+<html>
+  <body>
+    <!-- test si ya erreur affiche ce message -->
+    <% if @gossip.errors.any? %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Echec !</strong>
+        <p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
+        <ul>
+          <% @gossip.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>        
+      </div>  
+    <% end %>
+
+    <!-- ... -->
+    <h1>Créer un potin</h1>
+    <%= form_tag gossips_path, method: "create" do %>
+
+      <%= label_tag 'Title :' %>
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+      <%= text_field_tag 'title', "test"  %>
+      <br /> <br />
+
+      <%= label_tag 'content :' %>
+      <%= text_area_tag 'content', "teeeeeeeeest" %>
+      <br /> <br />   
+      
+      <%= submit_tag "Submit" %>
+
+    <% end %>
+
+    <!-- ... -->
+    
+
+  </body>
+</html>
+
