@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user, except:[:index]
   def index
     puts "%"*50
     puts "Dans index comment :"

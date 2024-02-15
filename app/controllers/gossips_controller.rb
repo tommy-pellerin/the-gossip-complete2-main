@@ -1,4 +1,6 @@
 class GossipsController < ApplicationController
+  before_action :authenticate_user, except:[:index,:show]
+
     def index
       puts "$" * 60
       puts "Voici le param de la page welcome :"
@@ -80,4 +82,6 @@ class GossipsController < ApplicationController
 
       redirect_to gossips_path
     end
+    
+
 end
