@@ -4,13 +4,14 @@ Rails.application.routes.draw do
   get '/welcome/:first_name', to: 'gossips#index'
   get '/team', to: 'static#team'
   get '/contact', to: 'static#contact'
+  get '/sessions', to: 'sessions#new'
 
   resources :gossips do
     resources :comments
   end
-
   resources :profils
   resources :cities, only: [:index,:show]
+  resources :sessions, only: [:new, :create, :destroy]
   
 
 

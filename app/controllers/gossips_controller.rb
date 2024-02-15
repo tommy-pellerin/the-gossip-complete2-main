@@ -6,7 +6,12 @@ class GossipsController < ApplicationController
       puts "$" * 60    
       @first_name = params[:first_name]
       @gossips = Gossip.all
-      
+      puts "$" * 60
+      puts "Voici la sessions et l'user.id encours dans la page welcome :"
+      puts  session
+      puts  session.id
+      puts  session[:user_id]
+      puts "$" * 60 
     end
 
     def show
